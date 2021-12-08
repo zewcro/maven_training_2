@@ -13,13 +13,24 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-
         <junit.version>5.8.1</junit.version>
         <assertj.version>3.21.0</assertj.version>
 
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
+
+        <reflections.version>0.10.2</reflections.version>
     </properties>
+
+    <dependencyManagement>  <!--(1)-->
+        <dependencies>
+            <dependency>
+                <groupId>org.reflections</groupId>
+                <artifactId>reflections</artifactId>
+                <version>${reflections.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -35,7 +46,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
         <pluginManagement>
             <plugins>
@@ -71,7 +81,6 @@
             </plugin>
         </plugins>
     </build>
-
     <profiles>
         <profile>
             <id>with-tests</id>
